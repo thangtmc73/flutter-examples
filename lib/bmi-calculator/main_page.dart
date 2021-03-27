@@ -10,6 +10,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   int _height = 0;
   double _weight = 0;
+  double _bmi = 0;
 
   void _updateHeight(String height) {
     int intHeight = int.parse(height);
@@ -22,6 +23,14 @@ class _MainPageState extends State<MainPage> {
     double doubleWeight = double.parse(weight);
     setState(() {
       _weight = doubleWeight;
+    });
+  }
+
+  void calculateBMI() {
+    double heightInMeter = _height / 100;
+    double bmi = _weight / (heightInMeter * heightInMeter);
+    setState(() {
+      _bmi = bmi;
     });
   }
 
@@ -39,6 +48,10 @@ class _MainPageState extends State<MainPage> {
             onChanged: _updateWeight,
             keyboardType: TextInputType.number,
           ),
+          Text(
+            'BMI: $_bmi',
+          ),
+          TextButton(onPressed: calculateBMI, child: Text('Calculate'))
         ],
       ),
     );
