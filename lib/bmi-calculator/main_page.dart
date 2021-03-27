@@ -8,12 +8,26 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  int _height = 0;
+
+  void _updateHeight(String height) {
+    int intHeight = int.parse(height);
+    setState(() {
+      _height = intHeight;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[],
+        children: <Widget>[
+          TextField(
+            onChanged: _updateHeight,
+            keyboardType: TextInputType.number,
+          ),
+        ],
       ),
     );
   }
