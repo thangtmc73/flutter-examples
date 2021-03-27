@@ -41,12 +41,13 @@ class _MainPageState extends State<MainPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           TextField(
-            onChanged: _updateHeight,
-            keyboardType: TextInputType.number,
-          ),
+              onChanged: _updateHeight,
+              keyboardType: TextInputType.number,
+              decoration: new InputDecoration(hintText: "Height (cm)")),
           TextField(
             onChanged: _updateWeight,
             keyboardType: TextInputType.number,
+            decoration: new InputDecoration(hintText: "Weight (kg)"),
           ),
           Text(
             'BMI: $_bmi',
