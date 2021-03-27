@@ -9,7 +9,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int _height = 0;
-  int _weight = 0;
+  double _weight = 0;
 
   void _updateHeight(String height) {
     int intHeight = int.parse(height);
@@ -19,9 +19,9 @@ class _MainPageState extends State<MainPage> {
   }
 
   void _updateWeight(String weight) {
-    int intWeight = int.parse(weight);
+    double doubleWeight = double.parse(weight);
     setState(() {
-      _weight = intWeight;
+      _weight = doubleWeight;
     });
   }
 
