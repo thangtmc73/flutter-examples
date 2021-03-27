@@ -9,11 +9,19 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int _height = 0;
+  int _weight = 0;
 
   void _updateHeight(String height) {
     int intHeight = int.parse(height);
     setState(() {
       _height = intHeight;
+    });
+  }
+
+  void _updateWeight(String weight) {
+    int intWeight = int.parse(weight);
+    setState(() {
+      _weight = intWeight;
     });
   }
 
@@ -25,6 +33,10 @@ class _MainPageState extends State<MainPage> {
         children: <Widget>[
           TextField(
             onChanged: _updateHeight,
+            keyboardType: TextInputType.number,
+          ),
+          TextField(
+            onChanged: _updateWeight,
             keyboardType: TextInputType.number,
           ),
         ],
