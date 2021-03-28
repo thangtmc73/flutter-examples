@@ -11,6 +11,7 @@ class _MainPageState extends State<MainPage> {
   int _height = 0;
   double _weight = 0;
   double _bmi = 0;
+  bool _submitted = false;
 
   void _updateHeight(String height) {
     int intHeight = int.parse(height);
@@ -30,7 +31,14 @@ class _MainPageState extends State<MainPage> {
     double heightInMeter = _height / 100;
     double bmi = _weight / (heightInMeter * heightInMeter);
     setState(() {
+      _submitted = true;
       _bmi = bmi;
+    });
+  }
+
+  void resetBMICalculator() {
+    setState(() {
+      _submitted = false;
     });
   }
 
@@ -52,10 +60,17 @@ class _MainPageState extends State<MainPage> {
           Text(
             'BMI: $_bmi',
           ),
-          TextButton(onPressed: calculateBMI, child: Text('Calculate'))
           Text(
             'Result: ${getBMIResult(_bmi)}',
           ),
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+            TextButton(
+                onPressed: _submitted ? null : calculateBMI,
+                child: Text("Calculate")),
+            TextButton(
+                onPressed: _submitted ? resetBMICalculator : null,
+                child: Text("Reset")),
+          ])
         ],
       ),
     );
