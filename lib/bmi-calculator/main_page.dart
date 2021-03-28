@@ -49,13 +49,16 @@ class _MainPageState extends State<MainPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           TextField(
-              onChanged: _updateHeight,
-              keyboardType: TextInputType.number,
-              decoration: new InputDecoration(hintText: "Height (cm)")),
+            onChanged: _updateHeight,
+            keyboardType: TextInputType.number,
+            decoration: new InputDecoration(hintText: "Height (cm)"),
+            enabled: !_submitted,
+          ),
           TextField(
             onChanged: _updateWeight,
             keyboardType: TextInputType.number,
             decoration: new InputDecoration(hintText: "Weight (kg)"),
+            enabled: !_submitted,
           ),
           if (_submitted)
             Text(
