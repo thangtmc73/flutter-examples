@@ -57,12 +57,14 @@ class _MainPageState extends State<MainPage> {
             keyboardType: TextInputType.number,
             decoration: new InputDecoration(hintText: "Weight (kg)"),
           ),
-          Text(
-            'BMI: $_bmi',
-          ),
-          Text(
-            'Result: ${getBMIResult(_bmi)}',
-          ),
+          if (_submitted)
+            Text(
+              'BMI: ${_bmi.toStringAsFixed(2)}',
+            ),
+          if (_submitted)
+            Text(
+              'Result: ${getBMIResult(_bmi)}',
+            ),
           Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
             TextButton(
                 onPressed: _submitted ? null : calculateBMI,
