@@ -53,8 +53,36 @@ class _MainPageState extends State<MainPage> {
             'BMI: $_bmi',
           ),
           TextButton(onPressed: calculateBMI, child: Text('Calculate'))
+          Text(
+            'Result: ${getBMIResult(_bmi)}',
+          ),
         ],
       ),
     );
   }
+}
+
+String getBMIResult(double bmi) {
+  if (bmi < 16) {
+    return "Severe Thinness";
+  }
+  if (bmi < 17) {
+    return "Moderate Thinness";
+  }
+  if (bmi < 18.5) {
+    return "Mild Thinness";
+  }
+  if (bmi < 25) {
+    return "Normal";
+  }
+  if (bmi < 30) {
+    return "Overweight";
+  }
+  if (bmi < 35) {
+    return "Obese Class I";
+  }
+  if (bmi < 40) {
+    return "Obese Class II";
+  }
+  return "Obese Class III";
 }
